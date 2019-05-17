@@ -7,36 +7,22 @@ import br.unisinos.parthenos.generator.io.repository.FileRepository;
 import br.unisinos.parthenos.generator.io.repository.FolderRepository;
 import br.unisinos.parthenos.generator.io.repository.Repository;
 import br.unisinos.parthenos.generator.prolog.knowledgeBase.KnowledgeBase;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 import java.security.InvalidParameterException;
 import java.util.Map;
 import java.util.Set;
 
-import static picocli.CommandLine.Option;
-import static picocli.CommandLine.Parameters;
-
 @Getter
-@Setter
-public class Interpreter {
-  @Option(names = {"-r", "--repository"})
+@AllArgsConstructor
+public class Processor {
   private File repositoryFolder;
-
-  @Option(names = {"-f", "--outputFolder"})
   private File outputFolder;
-
-  @Option(names = {"-L", "--link"})
   private File linkingFile;
-
-  @Option(names = {"-l", "--languages"}, required = true)
   private Set<SourceLanguage> sourceLanguages;
-
-  @Option(names = {"-e", "--extensions"}, required = true)
   private Set<File> extensions;
-
-  @Parameters
   private Set<File> sourceFiles;
 
   private boolean useFolderRepository() {
@@ -71,7 +57,7 @@ public class Interpreter {
     return outputFolder;
   }
 
-  public void execute() {
+  public void process() {
     this.checkForErrors();
 
     Extension.includeAll(this.getExtensions());
