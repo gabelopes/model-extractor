@@ -1,6 +1,6 @@
 package br.unisinos.parthenos.generator.io;
 
-import br.unisinos.parthenos.generator.enumerator.SourceLanguage;
+import br.unisinos.parthenos.generator.pool.SourceLanguage;
 import br.unisinos.parthenos.generator.prolog.term.Atom;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

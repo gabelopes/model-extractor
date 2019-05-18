@@ -2,9 +2,9 @@ package br.unisinos.parthenos.generator;
 
 import br.unisinos.parthenos.generator.analyzer.FactAnalyzer;
 import br.unisinos.parthenos.generator.analyzer.FactAnalyzerFactory;
-import br.unisinos.parthenos.generator.enumerator.SourceLanguage;
 import br.unisinos.parthenos.generator.io.SourceFile;
 import br.unisinos.parthenos.generator.io.repository.Repository;
+import br.unisinos.parthenos.generator.pool.SourceLanguage;
 import br.unisinos.parthenos.generator.processor.KnowledgeBaseProcessor;
 import br.unisinos.parthenos.generator.processor.KnowledgeBaseProcessorFactory;
 import br.unisinos.parthenos.generator.prolog.fact.Fact;

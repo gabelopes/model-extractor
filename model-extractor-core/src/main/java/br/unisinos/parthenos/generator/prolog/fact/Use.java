@@ -1,7 +1,7 @@
 package br.unisinos.parthenos.generator.prolog.fact;
 
 import br.unisinos.parthenos.generator.annotation.Arity;
-import br.unisinos.parthenos.generator.annotation.Predicate;
+import br.unisinos.parthenos.generator.annotation.Functor;
 import br.unisinos.parthenos.generator.prolog.term.Atom;
 import br.unisinos.parthenos.generator.prolog.term.Term;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 import java.nio.file.Path;
 
-@Predicate("use")
+@Functor("use")
 @Arity(1)
 @Getter
 @AllArgsConstructor

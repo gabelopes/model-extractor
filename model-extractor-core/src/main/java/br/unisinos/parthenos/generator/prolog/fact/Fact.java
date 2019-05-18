@@ -1,7 +1,7 @@
 package br.unisinos.parthenos.generator.prolog.fact;
 
 import br.unisinos.parthenos.generator.annotation.Arity;
-import br.unisinos.parthenos.generator.annotation.Predicate;
+import br.unisinos.parthenos.generator.annotation.Functor;
 import br.unisinos.parthenos.generator.exception.ArityNotFoundException;
 import br.unisinos.parthenos.generator.prolog.term.Term;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -14,13 +14,13 @@ public abstract class Fact {
 
   public String getPredicate() {
     final Class<? extends Fact> factClass = this.getClass();
-    final Predicate predicate = factClass.getAnnotation(Predicate.class);
+    final Functor functor = factClass.getAnnotation(Functor.class);
 
-    if (predicate == null) {
+    if (functor == null) {
       throw new ArityNotFoundException(factClass);
     }
 
-    return predicate.value();
+    return functor.value();
   }
 
   public int getArity() {

@@ -1,7 +1,8 @@
 package br.unisinos.parthenos.generator.processor;
 
 import br.unisinos.parthenos.generator.annotation.Language;
-import br.unisinos.parthenos.generator.enumerator.SourceLanguage;
+import br.unisinos.parthenos.generator.pool.SourceLanguage;
+import br.unisinos.parthenos.generator.pool.SourceLanguagePool;
 import org.reflections.Reflections;
 
 import java.util.Objects;
@@ -24,7 +25,7 @@ public class KnowledgeBaseProcessorFactory {
       return null;
     }
 
-    return language.value();
+    return SourceLanguagePool.get(language.value());
   }
 
   private static boolean isProperProcessor(Class<? extends KnowledgeBaseProcessor> processorClass, Set<SourceLanguage> sourceLanguages) {

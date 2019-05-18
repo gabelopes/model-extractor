@@ -1,7 +1,7 @@
 package br.unisinos.parthenos.generator.prolog.fact;
 
 import br.unisinos.parthenos.generator.annotation.Arity;
-import br.unisinos.parthenos.generator.annotation.Predicate;
+import br.unisinos.parthenos.generator.annotation.Functor;
 import br.unisinos.parthenos.generator.builder.FactBuilder;
 import br.unisinos.parthenos.generator.enumerator.EdgeLabel;
 import br.unisinos.parthenos.generator.prolog.term.Term;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Predicate("edge")
+@Functor("edge")
 @Arity(3)
 public class Edge extends Fact {
   private Term<?> head;

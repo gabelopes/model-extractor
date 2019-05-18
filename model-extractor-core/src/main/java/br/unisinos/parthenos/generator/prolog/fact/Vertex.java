@@ -1,7 +1,7 @@
 package br.unisinos.parthenos.generator.prolog.fact;
 
 import br.unisinos.parthenos.generator.annotation.Arity;
-import br.unisinos.parthenos.generator.annotation.Predicate;
+import br.unisinos.parthenos.generator.annotation.Functor;
 import br.unisinos.parthenos.generator.builder.FactBuilder;
 import br.unisinos.parthenos.generator.enumerator.VertexDescriptor;
 import br.unisinos.parthenos.generator.prolog.term.Term;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Predicate("vertex")
+@Functor("vertex")
 @Arity(2)
 public class Vertex extends Fact {
   private VertexDescriptor descriptor;

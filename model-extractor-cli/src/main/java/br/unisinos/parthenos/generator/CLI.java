@@ -1,18 +1,9 @@
 package br.unisinos.parthenos.generator;
 
-import br.unisinos.parthenos.generator.enumerator.SourceLanguage;
-import br.unisinos.parthenos.generator.io.KnowledgeBaseWriter;
-import br.unisinos.parthenos.generator.io.SourceFile;
-import br.unisinos.parthenos.generator.io.repository.FileRepository;
-import br.unisinos.parthenos.generator.io.repository.FolderRepository;
-import br.unisinos.parthenos.generator.io.repository.Repository;
-import br.unisinos.parthenos.generator.prolog.knowledgeBase.KnowledgeBase;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.File;
-import java.security.InvalidParameterException;
-import java.util.Map;
 import java.util.Set;
 
 import static picocli.CommandLine.Option;
@@ -31,7 +22,7 @@ public class CLI {
   private File linkingFile;
 
   @Option(names = {"-l", "--languages"}, required = true)
-  private Set<SourceLanguage> sourceLanguages;
+  private Set<String> sourceLanguages;
 
   @Option(names = {"-e", "--extensions"}, required = true)
   private Set<File> extensions;

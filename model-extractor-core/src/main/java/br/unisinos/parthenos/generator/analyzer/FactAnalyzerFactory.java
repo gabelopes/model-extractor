@@ -1,8 +1,9 @@
 package br.unisinos.parthenos.generator.analyzer;
 
 import br.unisinos.parthenos.generator.annotation.Language;
-import br.unisinos.parthenos.generator.enumerator.SourceLanguage;
 import br.unisinos.parthenos.generator.io.SourceFile;
+import br.unisinos.parthenos.generator.pool.SourceLanguage;
+import br.unisinos.parthenos.generator.pool.SourceLanguagePool;
 import org.reflections.Reflections;
 
 import java.io.File;
@@ -40,7 +41,7 @@ public class FactAnalyzerFactory {
       return null;
     }
 
-    return language.value();
+    return SourceLanguagePool.get(language.value());
   }
 
   private static Map<SourceLanguage, Class<? extends FactAnalyzer>> getFactAnalyzers() {
