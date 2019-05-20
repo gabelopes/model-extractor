@@ -17,7 +17,7 @@ public class Use extends Fact {
   private Path path;
 
   private String getEscapedPath() {
-    return this.getPath().toString().replace("\\", "/");
+    return this.getPath().toAbsolutePath().toString().replace("\\", "/");
   }
 
   private Atom getPathAtom() {
