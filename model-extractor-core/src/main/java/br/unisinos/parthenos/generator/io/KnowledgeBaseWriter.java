@@ -2,6 +2,7 @@ package br.unisinos.parthenos.generator.io;
 
 import br.unisinos.parthenos.generator.exception.CouldNotCreateOutputFolderException;
 import br.unisinos.parthenos.generator.prolog.fact.Fact;
+import br.unisinos.parthenos.generator.prolog.fact.Repository;
 import br.unisinos.parthenos.generator.prolog.fact.Use;
 import br.unisinos.parthenos.generator.prolog.knowledgeBase.KnowledgeBase;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,9 @@ public class KnowledgeBaseWriter {
   private static final String PROLOG_EXTENSION = ".pl";
 
   @NonNull
+  private File repositoryFolder;
+
+  @NonNull
   private File outputFolder;
 
   @NonNull
@@ -35,11 +39,11 @@ public class KnowledgeBaseWriter {
 
   private File linkingFile;
 
-  private boolean shouldWriteLinkingFile() {
-    return this.getLinkingFile() != null;
+  private Fact createRepositoryFact() {
+    return new Repository(this.getRepositoryFolder());
   }
 
-  private Set<Fact> createUsesFacts(Set<Path> linkableFilePaths) {
+  private Set<Use> createUsesFacts(Set<Path> linkableFilePaths) {
     return linkableFilePaths
       .stream()
       .map(Use::new)
@@ -48,8 +52,12 @@ public class KnowledgeBaseWriter {
 
   private void writeLinkingFile(Set<Path> linkableFilePaths) {
     final Path linkingFilePath = this.getOutputFolder().toPath().resolve(this.getLinkingFile().toPath());
-    final Set<Fact> usesFacts = this.createUsesFacts(linkableFilePaths);
-    final List<String> prologUsesFacts = KnowledgeBase.from(usesFacts).toPrologFacts();
+    final Set<Fact> linkingFileFacts = new HashSet<>();
+
+    linkingFileFacts.add(this.createRepositoryFact());
+    linkingFileFacts.addAll(this.createUsesFacts(linkableFilePaths));
+    
+    final List<String> prologUsesFacts = KnowledgeBase.from(linkingFileFacts).toPrologFacts();
 
     try {
       System.out.println("Writing linking file into " + linkingFilePath);
@@ -57,6 +65,10 @@ public class KnowledgeBaseWriter {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private boolean shouldWriteLinkingFile() {
+    return this.getLinkingFile() != null;
   }
 
   private String createKnowledgeBaseFileName(SourceFile sourceFile, int disambiguation) {

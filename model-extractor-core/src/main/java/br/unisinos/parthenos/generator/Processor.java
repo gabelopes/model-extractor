@@ -79,7 +79,7 @@ public class Processor {
 
     final KnowledgeBaseGenerator knowledgeBaseGenerator = new KnowledgeBaseGenerator(repository);
     final Map<SourceFile, KnowledgeBase> knowledgeBases = knowledgeBaseGenerator.generate();
-    final KnowledgeBaseWriter knowledgeBaseWriter = new KnowledgeBaseWriter(outputFolder, knowledgeBases, this.getLinkingFile());
+    final KnowledgeBaseWriter knowledgeBaseWriter = new KnowledgeBaseWriter(this.getRepositoryFolder(), outputFolder, knowledgeBases, this.getLinkingFile());
 
     knowledgeBaseWriter.writeKnowledgeBases();
   }
