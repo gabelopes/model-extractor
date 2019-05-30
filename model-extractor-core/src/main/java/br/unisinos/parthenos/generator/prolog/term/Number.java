@@ -17,7 +17,7 @@ public class Number<T extends java.lang.Number> implements Term<T> {
   }
 
   @Override
-  public String getTerm() {
+  public String portray() {
     return this.getContent().toString();
   }
 

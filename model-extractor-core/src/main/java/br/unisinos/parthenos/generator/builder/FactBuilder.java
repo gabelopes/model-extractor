@@ -28,11 +28,18 @@ public class FactBuilder {
   }
 
   public String buildFact() {
+    return this.buildFact(true);
+  }
+
+  public String buildFact(boolean terminate) {
     final StringBuilder stringBuilder = new StringBuilder();
 
     this.writePredicate(stringBuilder);
     this.writeArguments(stringBuilder);
-    this.terminateFact(stringBuilder);
+
+    if (terminate) {
+      this.terminateFact(stringBuilder);
+    }
 
     return stringBuilder.toString();
   }
@@ -77,7 +84,7 @@ public class FactBuilder {
   }
 
   private String getArgumentText(final Term[] arguments, final int index) {
-    return index < arguments.length ? arguments[index].getTerm() : IGNORED_ARGUMENT;
+    return index < arguments.length ? arguments[index].portray() : IGNORED_ARGUMENT;
   }
 
   private void closeArguments(final StringBuilder stringBuilder) {

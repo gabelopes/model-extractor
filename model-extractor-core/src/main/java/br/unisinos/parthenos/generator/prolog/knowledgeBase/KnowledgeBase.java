@@ -214,7 +214,7 @@ public class KnowledgeBase extends HashSet<Fact> {
       final Term<?> factArgument = fact.getArguments()[i];
       final Term<?> argument = arguments[i];
 
-      if (argument != null && !factArgument.getTerm().equals(argument.getTerm())) {
+      if (argument != null && !factArgument.portray().equals(argument.portray())) {
         return false;
       }
     }

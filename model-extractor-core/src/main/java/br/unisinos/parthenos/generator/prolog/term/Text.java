@@ -12,7 +12,7 @@ public class Text implements Term<String> {
   private String content;
 
   @Override
-  public String getTerm() {
+  public String portray() {
     return "\"" + this.getContent() + "\"";
   }
 
@@ -34,6 +34,6 @@ public class Text implements Term<String> {
 
   @Override
   public String toString() {
-    return this.getTerm();
+    return this.portray();
   }
 }

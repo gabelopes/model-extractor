@@ -2,6 +2,7 @@ package br.unisinos.parthenos.generator.prolog.fact;
 
 import br.unisinos.parthenos.generator.annotation.Arity;
 import br.unisinos.parthenos.generator.annotation.Functor;
+import br.unisinos.parthenos.generator.builder.FactBuilder;
 import br.unisinos.parthenos.generator.exception.ArityNotFoundException;
 import br.unisinos.parthenos.generator.prolog.term.Term;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -9,7 +10,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.util.Arrays;
 import java.util.Objects;
 
-public abstract class Fact {
+public abstract class Fact implements Term<Fact> {
   public abstract Term<?>[] getArguments();
 
   public String getPredicate() {
@@ -32,6 +33,16 @@ public abstract class Fact {
     }
 
     return arity.value();
+  }
+
+  @Override
+  public Fact getContent() {
+    return this;
+  }
+
+  @Override
+  public String portray() {
+    return new FactBuilder(this).buildFact(false);
   }
 
   @Override

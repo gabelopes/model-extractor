@@ -10,7 +10,7 @@ public interface EdgeLabel extends Enumerator, Term<String> {
   }
 
   @Override
-  default String getTerm() {
-    return new Atom(this.getContent().toLowerCase()).getTerm();
+  default String portray() {
+    return new Atom(this.getContent().toLowerCase()).portray();
   }
 }
